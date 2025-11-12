@@ -2,126 +2,134 @@
 <!DOCTYPE html>
 <!--Only in english-->
 <html lang="en">
-
 <head>
 
-    <meta charset="UTF-8">
-    <!--Name displayed on TAB-->
-    <title>BMI Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <!--Name displayed on TAB-->
+  <title>BMI Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap 5 for quick, accessible styling -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5 for quick, accessible styling -->
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet">
 </head>
 
-<!--All below <body> and above </body> will be displayed-->
-
+<!--All below <body and above </body will be displayed-->
 <body class="bg-light">
     <!--Adds padding above and below container-->
-    <main class="container py-5">
-        <section class="card shadow p-4 mx-auto" style="max-width:520px;">
-            <!--displays calculator-->
-            <h1 class="h3 text-center mb-3">BMI Calculator</h1>
-            <!--Disclaimer to those that don't use lbs and inches-->
-            <p class="text-center">
-                Enter your name, weight (lbs), and height (inches).
-            </p>
+  <main class="container py-5">
+    <section class="card shadow p-4 mx-auto" style="max-width:520px;">
+        <!--displays calculator-->
+      <h1 class="h3 text-center mb-3">BMI Calculator</h1>
+      <!--Disclaimer to those that don't use lbs and inches-->
+      <p class="text-center">
+        Enter your name, weight (lbs), and height (inches).
+      </p>
 
-            <!-- User Input Form -->
-            <form id="bmiForm">
-                <div class="mb-3">
-                    <!--text box display-->
-                    <label for="name" class="form-label">Name</label>
-                    <!--Allows for name input-->
-                    <input id="name" class="form-control" type="text">
-                </div>
-                <div class="mb-3">
-                    <!--text box display-->
-                    <label for="weight" class="form-label">Weight (lbs)</label>
-                    <!--Allows user to input weight-->
-                    <input id="weight" class="form-control" type="number" step="any">
-                </div>
-                <div class="mb-3">
-                    <!--text box display-->
-                    <label for="height" class="form-label">Height (inches)</label>
-                    <!--Allows user to input HEIGHT-->
-                    <input id="height" class="form-control" type="number" step="any">
-                </div>
+      <!-- User Input Form -->
+      <form id="bmiForm">
+        <div class="mb-3">
+            <!--text box display-->
+          <label for="name" class="form-label">Name</label>
+          <!--Allows for name input-->
+          <input id="name" class="form-control" type="text">
+        </div>
+        <div class="mb-3">
+            <!--text box display-->
+          <label for="weight" class="form-label">Weight (lbs)</label>
+          <!--Allows user to input weight-->
+          <input id="weight" class="form-control" type="number" step="any">
+        </div>
+        <div class="mb-3">
+            <!--text box display-->
+          <label for="height" class="form-label">Height (inches)</label>
+          <!--Allows user to input HEIGHT-->
+          <input id="height" class="form-control" type="number" step="any">
+        </div>
 
-                <!-- Buttons to trigger JavaScript functions -->
-                <div class="d-flex gap-2">
-                    <!--this is a button--> <!--ON CLICK handleCalculation function plays-->
-                    <!--On Click allows for buttons to have functions other than links-->
-                    <button type="button" class="btn btn-primary" onclick="handleCalculation()">Calculate</button>
-                    <!--on button click, form is cleared-->
-                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
-                </div>
-            </form>
+        <!-- Buttons to trigger JavaScript functions -->
+        <div class="d-flex gap-2">
+            <!--this is a button-->                       <!--ON CLICK handleCalculation function plays-->
+                                        <!--On Click allows for buttons to have functions other than links-->
+          <button type="button" class="btn btn-primary" onclick="handleCalculation()">Calculate</button>
+                                                            <!--on button click, form is cleared-->
+          <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+        </div>
+      </form>
 
-            <!-- Area to show results (hidden until calculation) -->
-            <div id="result" class="alert alert-info mt-3" role="status" style="display:none;"></div>
-        </section>
-    </main>
+      <!-- Area to show results (hidden until calculation) -->
+      <div id="result" class="alert alert-info mt-3" role="status" style="display:none;"></div>
 
-    <!--JAVASCRIPT BEGINS HERE-->
-    <script>
-        //Part 2    
+    </section>
+  </main>
 
-        /**
-         * getCategory(bmi)
-         * Determines the BMI category based on the BMI value.
-         */
-        // Write function
+  <!--JAVASCRIPT BEGINS-->
+  <script>
 
-        /**
-         * handleCalculation()
-         * Reads inputs, calculates BMI, gets category, and displays the result.
-         */
+    /**calculateBMI function defined
+    * weight = pounds and height = inches
+    * Is called on later by handleCalculation()
+    */
+    function calculateBMI(weight, height) {
+      // Create a variable named bmi to hold the calculation result.
+      var bmi = (weight / (height * height)) * 703;
+      // Return the value so other parts of the program can use it.
+      return bmi;
+    }
+
+    /**
+     * getCategory(bmi)
+     * Determines the BMI category based on the BMI value.
+     */
+      function getCategory(bmi){
+        var category = ""
+        if(bmi < 18.5)
+          category = "Underweight" 
+        else 
+      }
+
+    /**
+     * handleCalculation()
+     * Reads inputs, calculates BMI, gets category, and displays the result.
+     */
+    
         //FUNCTION IS CALLED
-        function handleCalculation() {
-            // Part 1 Get values from form fields
-            var name = document.getElementById("name").value;
-            var weight = Number(document.getElementById("weight").value);
-            var height = Number(document.getElementById("height").value);
+    function handleCalculation() {
+      // Part 1 Get values from form fields
+      var name = document.getElementById("name").value;
+      var weight = Number(document.getElementById("weight").value);
+      var height = Number(document.getElementById("height").value);
 
-            // Part 2 Create  then call BMI calculation function
-            //var bmi = calculateBMI(weight, height);
-            function calculateBMI(weight, height) {
-                // Create a variable named bmi to hold the calculation result.
-                var bmi = (weight / (height * height)) * 703;
+      // Part 2 Create  then call BMI calculation function
+      var bmi = calculateBMI(weight, height);
 
-                // Return the value so other parts of the program can use it.
-                return bmi;
-            }
+      // Part 3 
+     var category = getCategory(bmi)
 
+      // Part 4 Display the result inside the result <div>
+     var result = document.getElementById("result");
+      result.textContent = `${name}, your BMI is ${bmi.toFixed(1)} (${category}).`;
+      result.style.display = "block"; // show the result box
+    }
 
-            // Part 3 
+// PART 1 Clear Form 
+    /**
+     * clearForm()
+     * Resets the form inputs and hides the result area.
+     */
+     //FUNCTION IS CALLED
+    function clearForm() {
+      // Reset all form fields to blank
+      document.getElementById("bmiForm").reset();
 
-
-            // Part 4 Display the result inside the result <div>
-            // var result = document.getElementById("result");
-            //result.textContent = `${name}, your BMI is ${bmi.toFixed(1)} (${category}).`;
-            //result.style.display = "block"; // show the result box
-        }
-
-        // PART 1 Clear Form 
-        /**
-         * clearForm()
-         * Resets the form inputs and hides the result area.
-         */
-        //FUNCTION IS CALLED
-        function clearForm() {
-            // Reset all form fields to blank
-            document.getElementById("bmiForm").reset();
-
-            // Clear text and hide result box
-            var result = document.getElementById("result");
-            //All textContent for the result is blank
-            result.textContent = "";
-            //
-            result.style.display = "none"; // hide the result box
-        }
-    </script>
+      // Clear text and hide result box
+      var result = document.getElementById("result");
+      //All textContent for the result is blank
+      result.textContent = "";
+      //
+      result.style.display = "none"; // hide the result box
+    }
+  </script>
 </body>
-
 </html>
